@@ -18,6 +18,12 @@ Feature: Compra y Autenticación en Sauce Demo
     And hace clic en el boton de login
     Then deberia ver un mensaje de error indicando que el usuario esta bloqueado
 
+  # Criterio de Evaluación: Manejo de credenciales inválidas (password incorrecto)
+  Scenario: Inicio de sesion con contraseña incorrecta
+    When el usuario ingresa el username "standard_user" y el password "password_incorrecto"
+    And hace clic en el boton de login
+    Then deberia ver un mensaje de error indicando que las credenciales no coinciden
+
   # Criterio de Evaluación: Agregar a carrito y checkout
   Scenario: Completar una compra exitosamente
     Given el usuario ya ha iniciado sesion exitosamente con "standard_user" y "secret_sauce"

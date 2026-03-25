@@ -48,4 +48,12 @@ public class LoginSteps {
         loginPage.iniciarSesion(username, password);
         Assert.assertTrue("Fallo el login previo a la compra", loginPage.estaEnPaginaInventario());
     }
+
+    @Then("deberia ver un mensaje de error indicando que las credenciales no coinciden")
+    public void deberia_ver_un_mensaje_de_error_indicando_que_las_credenciales_no_coinciden() {
+        String mensajeObtenido = loginPage.obtenerMensajeError();
+        // Validamos que el mensaje de error sea el esperado para credenciales incorrectas
+        Assert.assertTrue("El mensaje de error no indica problemas con el username o password", 
+            mensajeObtenido.contains("Username and password do not match"));
+    }
 }
